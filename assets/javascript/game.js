@@ -1,0 +1,52 @@
+var wins = 0;
+var wins = 0;
+var losses = 0;
+var guessesLeft = 9;
+var guessesThusFar = []; 
+var computerChoices = ['a', 'b', 'c', 'd', 'e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','u','x','y','z'];//array to choose from
+
+document.onkeyup = function(event){
+    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    var computerGuess = computerChoices[Math.floor(Math.random()*computerChoices.length)];
+    guessesThusFar.push(userGuess);
+    
+    if (userGuess == computerGuess) {
+        wins++;
+        alert('Awesome! You Guessed correctly. You won!');
+        guessesLeft = 9;
+        guessesThusFar.length = 0;
+    }
+    else if(guessesLeft == 0){
+        losses++;
+        alert('Incorrect letter. Try again');
+        guessesLeft = 9;
+        guessesThusFar.length = 0;
+
+    }
+    else if(userGuess !== computerGuess){
+        guessesLeft--;
+    }
+    // Taking tallies and displaying in HTML
+    var html = "<h1>Psychic Game</h1>" +
+    "<p>Guess the letter I am thinking of</p>" +
+    "<p>Total wins: " +
+    wins +
+    "</p>" +
+   "<p>Total losses: " +
+   losses +
+   "</p>" +
+    "<p>Guesses left: " + 
+    guessesLeft +
+    "</p>" +
+    "<p>Guesses thus far: " +
+    guessesThusFar +
+    "</p>"
+    ;
+    document.querySelector('#game').innerHTML = html;
+
+
+
+
+}
+
+
