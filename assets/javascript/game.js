@@ -10,13 +10,13 @@ document.onkeyup = function(event){
     var computerGuess = computerChoices[Math.floor(Math.random()*computerChoices.length)];
     guessesThusFar.push(userGuess);
     
-    if (userGuess == computerGuess) {
+    if (userGuess === computerGuess) {
         wins++;
-        alert('Awesome! You Guessed correctly. You won!');
+        alert('You Guessed correctly. You won!');
         guessesLeft = 9;
         guessesThusFar.length = 0;
     }
-    else if(guessesLeft == 0){
+    else if(guessesLeft === 0){
         losses++;
         alert('Incorrect letter. Try again');
         guessesLeft = 9;
